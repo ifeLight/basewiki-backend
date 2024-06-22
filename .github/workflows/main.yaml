@@ -3,7 +3,7 @@ name: Build, Test and Deploy to Cloud Run
 on:
     push:
         branches:
-        - $default-branch
+        - main
 
 env:
     PROJECT_ID: basewiki # Change to your GCP project ID
