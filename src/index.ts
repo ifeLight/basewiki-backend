@@ -29,5 +29,8 @@ configureGenkit({
 
 startFlowsServer({
     flows: [askBaseFlow, toolFlow],
-    port: 3000,
+    port: config.get('port'),
+    cors: {
+        origin: '*',
+    }
 });
