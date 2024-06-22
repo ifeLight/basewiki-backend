@@ -4,7 +4,7 @@ dotenv.config();
 const appPort = process.env.PORT || 3500;
 
 module.exports = {
-    name: process.env.APP_NAME || "Itekku",
+    name: process.env.APP_NAME || "BaseWiki",
     port: appPort,
     appUrl: process.env.APP_URL || `http://localhost:${appPort}`,
     environment: process.env.NODE_ENV || "development",
@@ -20,8 +20,15 @@ module.exports = {
         }
     },
     database: {
-        mongo: {
-            url: process.env.MONGO_URL || "mongodb://localhost:27017/fund10x",
+        mongodb: {
+            uri: process.env.MONGO_URI || "mongodb://localhost:27017/basewiki",
         }
     },
+    ai: {
+        vertexAI: {
+            projectId: process.env.VERTEX_AI_PROJECT_ID || 'your-project-id',
+            location: process.env.VERTEX_AI_LOCATION || 'us-central1',
+            apiKey: process.env.VERTEX_AI_API_KEY || 'your-api-key',
+        }
+    }
 }

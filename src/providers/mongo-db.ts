@@ -1,10 +1,9 @@
 import config from 'config'
 import mongoose from 'mongoose'
 
-
 import logger from '../utils/logger.js';
 
-let MONGO_URI: string = config.get('mongodb.uri') as string
+let MONGO_URI: string = config.get('database.mongodb.uri') as string
 
 (async () => {
     logger.info('Mongo connect initiation running...')
