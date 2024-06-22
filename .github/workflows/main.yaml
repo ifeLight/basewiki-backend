@@ -13,16 +13,16 @@ env:
 jobs:
     ci-cd:
         runs-on: ubuntu-latest
-        services:
-            mongodb:
-                image: mongo:latest
-                ports:
-                    - 27017:27017
-                options: >-
-                    --health-cmd "mongo --eval 'db.runCommand({ connectionStatus: 1 })'" 
-                    --health-interval 10s 
-                    --health-timeout 5s 
-                    --health-retries 5
+        # services:
+        #     mongodb:
+        #         image: mongo:latest
+        #         ports:
+        #             - 27017:27017
+        #         options: >-
+        #             --health-cmd "mongo --eval 'db.runCommand({ connectionStatus: 1 })'" 
+        #             --health-interval 10s 
+        #             --health-timeout 5s 
+        #             --health-retries 5
 
         steps:
         - name: Checkout repository
@@ -45,6 +45,12 @@ jobs:
             run: mkdir -p .keys && echo $GCP_CREDENTIALS > .keys/gcp-credentials.json
             env:
                 GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+
+        -   name: Start MongoDB
+            uses: supercharge/mongodb-github-action@1.11.0
+            with:
+                mongodb-version: latest
+                mongodb-replica-set: rs
 
         -   name: Test application
             run: npm run test
