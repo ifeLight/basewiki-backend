@@ -118,3 +118,6 @@ uploads/*
 
 # VS Code files
 .vscode
+
+# Lib folders
+lib/*
