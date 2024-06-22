@@ -7,7 +7,7 @@ import { myTool } from "../tools/my-tool";
 
 export const toolFlow = defineFlow(
     {
-        name: 'Test tool',
+        name: 'TestToolFlow',
         inputSchema: z.string(),
         outputSchema: z.string()
     },

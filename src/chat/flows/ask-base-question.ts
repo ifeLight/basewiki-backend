@@ -7,7 +7,7 @@ import { askBaseQuestionHandler } from '../handlers/ask-base-question';
 
 export const askBaseFlow = defineFlow(
     {
-        name: 'Ask Base Flow',
+        name: 'AskBaseFlow',
         inputSchema: z.object({
             sessionId: z.string(),
             question: z.string()

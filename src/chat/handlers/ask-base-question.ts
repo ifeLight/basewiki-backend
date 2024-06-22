@@ -2,17 +2,22 @@ import { MessageData } from "@genkit-ai/ai/model";
 import { generate } from '@genkit-ai/ai';
 import { geminiPro, } from '@genkit-ai/vertexai';
 
+import { ChatSession } from "../../models/chat-session";
+
 import { IAskBaseQuestion } from "../../interfaces";
 import { getCoinPriceTool } from "../tools/get-coin-price";
 
 
 const getChatHistory = async (sessionId: string): Promise<MessageData[]> => {
     // get chat history from DB
-    return []
+    const chatSession = await ChatSession.findOne({ sessionId });
+    if (!chatSession) return [];
+    return chatSession.history;
 }
 
 const saveChatHistory = async (sessionId: string, history: MessageData[]) => {
-    // save chat history to DB
+    // Append new history to existing history
+    await ChatSession.updateOne({ sessionId }, { $set: { history } }, { upsert: true });
 }
 
 
@@ -32,7 +37,8 @@ export const askBaseQuestionHandler = async (request: IAskBaseQuestion): Promise
     });
 
     // Save latest history
-    await saveChatHistory(request.sessionId, response.toHistory())
+    const latestHistory = response.toHistory()
+    await saveChatHistory(request.sessionId, latestHistory)
 
     // console.log(response.text());
 
