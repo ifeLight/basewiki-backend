@@ -21,7 +21,7 @@ module.exports = {
     },
     database: {
         mongodb: {
-            uri: process.env.MONGO_URI || "mongodb://localhost:27017/basewiki",
+            uri: process.env.MONGODB_URI || "mongodb://localhost:27017/basewiki",
         }
     },
     ai: {

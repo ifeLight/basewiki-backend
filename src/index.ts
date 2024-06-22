@@ -17,7 +17,7 @@ configureGenkit({
             location: config.get('ai.vertexAI.location'),
             projectId: config.get('ai.vertexAI.projectId'),
             googleAuth: {
-                keyFilename: path.join(__dirname, '../.keys/google-credentials.json'),
+                keyFilename: path.join(__dirname, '../.keys/gcp-credentials.json'),
                 scopes: ['https://www.googleapis.com/auth/cloud-platform'],
             }
         }),
