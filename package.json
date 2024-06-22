@@ -3,6 +3,7 @@
     "scripts": {
         "start": "node lib/index.js",
         "build": "tsc",
+        "dev": "npm run build && npm run start",
         "build:watch": "tsc --watch",
         "database:dev": "docker compose -f dev-database.yaml up",
         "database:dev:remove": "docker compose -f dev-database.yaml down",

@@ -1,3 +1,4 @@
+import * as express from 'express';
 import { defineFlow } from '@genkit-ai/flow';
 import { geminiPro, gemini15Flash } from '@genkit-ai/vertexai';
 import * as z from 'zod';
@@ -12,7 +13,7 @@ export const askBaseFlow = defineFlow(
             sessionId: z.string(),
             question: z.string()
         }),
-        outputSchema: z.string()
+        outputSchema: z.string(),
     },
     //@ts-ignore
     askBaseQuestionHandler
