@@ -26,9 +26,8 @@ module.exports = {
     },
     ai: {
         vertexAI: {
-            projectId: process.env.VERTEX_AI_PROJECT_ID || 'your-project-id',
+            projectId: process.env.VERTEX_AI_PROJECT_ID || 'basewiki',
             location: process.env.VERTEX_AI_LOCATION || 'us-central1',
-            apiKey: process.env.VERTEX_AI_API_KEY || 'your-api-key',
         }
-    }
+    },
 }

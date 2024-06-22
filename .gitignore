@@ -121,3 +121,6 @@ uploads/*
 
 # Lib folders
 lib/*
+
+# Ignore keys at .keys folder
+.keys/*
