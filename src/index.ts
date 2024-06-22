@@ -1,6 +1,5 @@
 import { action, configureGenkit } from '@genkit-ai/core';
 import { defineFlow, startFlowsServer } from '@genkit-ai/flow';
-import * as z from 'zod';
 import { vertexAI } from '@genkit-ai/vertexai';
 
 import { toolFlow } from "./chat/flows/my-tool";
@@ -15,10 +14,7 @@ configureGenkit({
 });
 
 
-
-
 startFlowsServer({
     flows: [askBaseFlow, toolFlow],
     port: 3000,
-    pathPrefix: '/api/chatbot',
 });

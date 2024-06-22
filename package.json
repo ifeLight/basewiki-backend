@@ -4,6 +4,8 @@
         "start": "node lib/index.js",
         "build": "tsc",
         "build:watch": "tsc --watch",
+        "database:dev": "docker compose -f dev-database.yaml up",
+        "database:dev:remove": "docker compose -f dev-database.yaml down",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "name": "genkit-test",
