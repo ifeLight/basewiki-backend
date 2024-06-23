@@ -30,4 +30,7 @@ module.exports = {
             location: process.env.VERTEX_AI_LOCATION || 'us-central1',
         }
     },
+    gcp: {
+        credentials: process.env.GCP_CREDENTIALS || '', // This should be the content of the JSON file
+    }
 }
