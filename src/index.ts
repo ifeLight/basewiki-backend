@@ -20,6 +20,10 @@ let googleAuth: any = {
 
 if (fs.existsSync(path.join(__dirname, '../.keys/gcp-credentials.json'))) {
     googleAuth['keyFilename'] = path.join(__dirname, '../.keys/gcp-credentials.json');
+} else if (fs.existsSync(path.join(__dirname, '../.ci-keys/gcp-credentials.json'))) {
+    // This is for CI/CD
+    googleAuth['keyFilename'] = path.join(__dirname, '../.ci-keys/gcp-credentials.json');
+
 } else if (GCP_CREDENTIALS) {
     googleAuth['credentials'] = JSON.parse(GCP_CREDENTIALS);
 } else {
