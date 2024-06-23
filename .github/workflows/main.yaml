@@ -1,5 +1,29 @@
 name: Build, Test and Deploy to Cloud Run
 
+# This workflow is triggered on push events to the main branch
+# To Deploy to Cloud Run, you need to set up the following secrets:
+# - GCP_CREDENTIALS: The service account key for the GCP project
+# - MONGODB_URI: The MongoDB connection string
+
+# For cloud run to work the following APIs need to be enabled:
+# - Cloud Run API
+# - Cloud Build API
+# - Cloud Storage API
+# - Vertex AI API
+# - Google Artifact Registry API
+# - Google AI Platform Training & Prediction API
+
+# The service account used in the GCP_CREDENTIALS should have the following roles:
+# - Cloud Run Developer
+# - Cloud Run Source Developer (!very important, if deploying from source)
+# - Storage Object Admin
+# - Artifact Registry Administrator
+# - Service Account User
+# - Service Usage Admin
+# - Cloud Build Editor
+# - Vertex AI User
+
+
 on:
     push:
         branches:
@@ -59,8 +83,9 @@ jobs:
                 # image: gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE }}
                 region: ${{ env.REGION }}
                 project_id: ${{ env.PROJECT_ID }}
-                env_vars: |-
+                env_vars: |
                     MONGODB_URI=${{ secrets.MONGODB_URI }}
+                    GCP_CREDENTIALS=.${{ secrets.GCP_CREDENTIALS }}
                 source: ./
 
         -   name: Output the URL
