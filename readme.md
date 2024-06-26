@@ -12,6 +12,7 @@ This project is the backend for the Base Wiki AI application. It provides endpoi
 
 ## Project Structure
 
+```
 src
 ├── chat
 │   ├── flow: Contains logic for creating application flows.
@@ -24,6 +25,9 @@ src
 ├── utils: Utility functions.
 └── lib: Contains the main application entry point (index.js).
 └── package.json: Defines dependencies, scripts, and project metadata.
+└── README.md: Contains a brief description of the project.
+└── tsconfig.json: Defines TypeScript configuration.
+```
 
 ## Dependencies
 
@@ -96,7 +100,7 @@ The application utilizes Google Cloud credentials for authentication. Here's a s
 3. Place this file within the `.keys` folder.
 4. Ignore the `.keys` folder in your version control system (e.g., `.gitignore`) to prevent accidental exposure.
 
-## Security (Crucial!)
+### Security (Crucial!)
 
 Storing your Google Cloud credentials directly in the `.keys` folder poses a significant security risk. During deployment, we need to utilize GitHub Actions Secrets for secure credential management.
 
