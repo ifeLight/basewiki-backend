@@ -7,7 +7,9 @@ import { getFilteredChatHistory } from '../../services/chat-session-service';
 export const getSessionHistoryFlow = defineFlow(
     {
         name: 'GetSessionHistory',
-        inputSchema: z.string(),
+        inputSchema: z.object({
+            sessionId: z.string(),
+        }),
         outputSchema: z.array(
             z.object({
                 role: z.string(),
