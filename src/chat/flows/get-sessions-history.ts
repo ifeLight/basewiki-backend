@@ -26,7 +26,7 @@ export const getSessionHistoryFlow = defineFlow(
         )
     },
     //@ts-ignore
-    async (sessionId: string) => {
+    async ({ sessionId }) => {
         const history = await getFilteredChatHistory(sessionId)
         return history
     }
