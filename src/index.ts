@@ -7,10 +7,14 @@ import { action, configureGenkit } from '@genkit-ai/core';
 import { defineFlow, startFlowsServer } from '@genkit-ai/flow';
 import { vertexAI } from '@genkit-ai/vertexai';
 
+import { registerOnShutdown } from './providers/shutdown';
+
 import { toolFlow } from "./chat/flows/my-tool";
 import { askBaseFlow } from "./chat/flows/ask-base-question";
+import { getSessionHistoryFlow } from './chat/flows/get-sessions-history';
 
 dotenv.config();
+registerOnShutdown();
 
 // Vertex AI Auth
 const GCP_CREDENTIALS: string = config.get('gcp.credentials');
@@ -45,7 +49,7 @@ configureGenkit({
 
 
 startFlowsServer({
-    flows: [askBaseFlow, toolFlow],
+    flows: [askBaseFlow, toolFlow, getSessionHistoryFlow],
     port: config.get('port'),
     cors: {
         origin: '*',
