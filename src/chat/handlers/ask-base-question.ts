@@ -1,24 +1,10 @@
-import { MessageData } from "@genkit-ai/ai/model";
 import { generate } from '@genkit-ai/ai';
 import { geminiPro, } from '@genkit-ai/vertexai';
 
-import { ChatSession } from "../../models/chat-session";
+import { getChatHistory, saveChatHistory } from '../../services/chat-session-service';
 
 import { IAskBaseQuestion } from "../../interfaces";
 import { getCoinPriceTool } from "../tools/get-coin-price";
-
-
-const getChatHistory = async (sessionId: string): Promise<MessageData[]> => {
-    // get chat history from DB
-    const chatSession = await ChatSession.findOne({ sessionId });
-    if (!chatSession) return [];
-    return chatSession.history;
-}
-
-const saveChatHistory = async (sessionId: string, history: MessageData[]) => {
-    // Append new history to existing history
-    await ChatSession.updateOne({ sessionId }, { $set: { history } }, { upsert: true });
-}
 
 
 export const askBaseQuestionHandler = async (request: IAskBaseQuestion): Promise<string> => {
