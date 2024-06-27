@@ -1,8 +1,5 @@
-import * as express from 'express';
 import { defineFlow } from '@genkit-ai/flow';
-import { geminiPro, gemini15Flash } from '@genkit-ai/vertexai';
 import * as z from 'zod';
-
 import { askBaseQuestionHandler } from '../handlers/ask-base-question';
 
 
