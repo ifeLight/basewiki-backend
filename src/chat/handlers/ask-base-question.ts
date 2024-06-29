@@ -15,6 +15,7 @@ export const askBaseQuestionHandler = async (request: IAskBaseQuestion): Promise
     }
     const response = await generate({
         prompt: `You are acting as a helpful AI assistant that can answer questions related to the Base blockchain network. Do not answer questions related to other blockchain networks.
+        All answers should be in a friendly and helpful tone and related to the Base blockchain network. And also avoid competitive blockchain ecosystem.
     
     Question: ${request.question}`,
         model: geminiPro,
